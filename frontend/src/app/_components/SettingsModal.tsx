@@ -192,7 +192,7 @@ export function SettingsModals({
               onClick={() => {
                 const micDevice = selectedDevices.micDevice || 'Default';
                 const systemDevice = selectedDevices.systemDevice || 'Default';
-                toast.success("Devices selected", {
+                toast.success("设备已选择", {
                   description: `Microphone: ${micDevice}, System Audio: ${systemDevice}`
                 });
                 onClose('deviceSettings');

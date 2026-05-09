@@ -240,7 +240,7 @@ export function SummaryGeneratorButtonGroup({
 
   return (
     <ButtonGroup>
-      {/* Generate Summary or Stop button */}
+      {/* 生成摘要 or Stop button */}
       {isGenerating ? (
         <Button
           variant="outline"
@@ -270,7 +270,7 @@ export function SummaryGeneratorButtonGroup({
               ? 'Loading model configuration...'
               : isCheckingModels
                 ? 'Checking models...'
-                : 'Generate AI Summary'
+                : '生成 AI 摘要'
           }
         >
           {isCheckingModels || isModelConfigLoading ? (
@@ -281,7 +281,7 @@ export function SummaryGeneratorButtonGroup({
           ) : (
             <>
               <Sparkles className="xl:mr-2" size={18} />
-              <span className="hidden lg:inline xl:inline">Generate Summary</span>
+              <span className="hidden lg:inline xl:inline">生成摘要</span>
             </>
           )}
         </Button>

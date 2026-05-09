@@ -62,7 +62,7 @@ export function TranscriptPanel({
                     variant="outline"
                     size="sm"
                     onClick={copyTranscript}
-                    title="Copy Transcript"
+                    title="复制转录"
                   >
                     <Copy />
                     <span className='hidden md:inline'>

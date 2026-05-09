@@ -297,7 +297,7 @@ export function ImportAudioDialog({
                         setTitle(e.target.value);
                         setTitleModifiedByUser(true);
                       }}
-                      placeholder="Enter meeting title"
+                      placeholder="输入会议标题"
                     />
                   </div>
 
