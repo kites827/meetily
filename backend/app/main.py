@@ -11,6 +11,7 @@ import json
 from threading import Lock
 from transcript_processor import TranscriptProcessor
 import time
+from ollama import AsyncClient
 
 # Load environment variables
 load_dotenv()
@@ -628,6 +629,69 @@ async def search_transcripts(request: SearchRequest):
         return JSONResponse(content=results)
     except Exception as e:
         logger.error(f"Error searching transcripts: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+class TranslationRequest(BaseModel):
+    text: str
+    target_language: str = "zh"  # default to Chinese
+    model: str  # 'claude', 'openai', 'ollama', 'groq'
+    model_name: str
+
+@app.post("/translate-text")
+async def translate_text(request: TranslationRequest):
+    """Translate text using LLM"""
+    try:
+        logger.info(f"Translation request: model={request.model}, target={request.target_language}, text_len={len(request.text)}")
+        
+        # Get API key based on provider
+        api_key = await db.get_api_key(request.model)
+        if not api_key and request.model != "ollama":
+            raise HTTPException(status_code=400, detail=f"API key not configured for {request.model}")
+        
+        # Build translation prompt
+        if request.target_language == "zh":
+            target_lang_name = "Chinese (中文)"
+        elif request.target_language == "en":
+            target_lang_name = "English"
+        else:
+            target_lang_name = request.target_language
+        
+        translation_prompt = f"""Translate the following text to {target_lang_name}. Only output the translated text, no explanations or quotes.
+
+Text to translate:
+{request.text}
+
+Translated text:"""
+        
+        result = ""
+        
+        if request.model == "ollama":
+            ollama_host = os.getenv('OLLAMA_HOST', 'http://localhost:11434')
+            client = AsyncClient(host=ollama_host)
+            response = await client.chat(model=request.model_name, messages=[{"role": "user", "content": translation_prompt}])
+            result = response['message']['content']
+        elif request.model == "claude":
+            from anthropic import AsyncAnthropic
+            client = AsyncAnthropic(api_key=api_key)
+            resp = await client.messages.create(model=request.model_name, max_tokens=4096, messages=[{"role": "user", "content": translation_prompt}])
+            result = resp.content[0].text
+        elif request.model == "openai":
+            from openai import AsyncOpenAI
+            client = AsyncOpenAI(api_key=api_key)
+            resp = await client.chat.completions.create(model=request.model_name, messages=[{"role": "user", "content": translation_prompt}])
+            result = resp.choices[0].message.content
+        elif request.model == "groq":
+            from groq import AsyncGroq
+            client = AsyncGroq(api_key=api_key)
+            resp = await client.chat.completions.create(model=request.model_name, messages=[{"role": "user", "content": translation_prompt}])
+            result = resp.choices[0].message.content
+        
+        return {"translated_text": result}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Translation error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.on_event("shutdown")
