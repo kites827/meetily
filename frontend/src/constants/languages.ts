@@ -20,5 +20,5 @@ export const LANGUAGES = [
   { code: 'tr', name: '土耳其语' },
 ];
 
-// 默认语言
-export const DEFAULT_LANGUAGE = 'zh';
+// 默认语言 - 自动检测，支持中英文混合录制
+export const DEFAULT_LANGUAGE = 'auto';

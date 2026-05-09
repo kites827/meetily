@@ -160,6 +160,6 @@ export const zh_CN = {
   },
 };
 
-// 导出默认语言
-export const DEFAULT_LANGUAGE = 'zh';
+// 导出默认语言 - 自动检测，支持中英文混合录制
+export const DEFAULT_LANGUAGE = 'auto';
 export const TRANSLATIONS = zh_CN;
