@@ -337,8 +337,8 @@ const Sidebar: React.FC = () => {
       Analytics.trackMeetingDeleted(itemId);
 
       // Show success toast
-      toast.success("Meeting deleted successfully", {
-        description: "All associated data has been removed"
+      toast.success("会议删除成功", {
+        description: "所有相关数据已被移除"
       });
 
       // If deleting the active meeting, navigate to home
@@ -348,7 +348,7 @@ const Sidebar: React.FC = () => {
       }
     } catch (error) {
       console.error('Failed to delete meeting:', error);
-      toast.error("Failed to delete meeting", {
+      toast.error("删除会议失败", {
         description: error instanceof Error ? error.message : String(error)
       });
     }
@@ -379,7 +379,7 @@ const Sidebar: React.FC = () => {
 
     // Prevent empty titles
     if (!newTitle) {
-      toast.error("Meeting title cannot be empty");
+      toast.error("会议标题不能为空");
       return;
     }
 
@@ -403,14 +403,14 @@ const Sidebar: React.FC = () => {
       // Track the edit
       Analytics.trackButtonClick('edit_meeting_title', 'sidebar');
 
-      toast.success("Meeting title updated successfully");
+      toast.success("会议标题已更新");
 
       // Close modal and reset state
       setEditModalState({ isOpen: false, meetingId: null, currentTitle: '' });
       setEditingTitle('');
     } catch (error) {
       console.error('Failed to update meeting title:', error);
-      toast.error("Failed to update meeting title", {
+      toast.error("更新会议标题失败", {
         description: error instanceof Error ? error.message : String(error)
       });
     }
@@ -467,7 +467,7 @@ const Sidebar: React.FC = () => {
               </button>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>Home</p>
+              <p>首页</p>
             </TooltipContent>
           </Tooltip>
 
@@ -486,7 +486,7 @@ const Sidebar: React.FC = () => {
               </button>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>{isRecording ? "Recording in progress..." : "Start Recording"}</p>
+              <p>{isRecording ? "录音中..." : "开始录音"}</p>
             </TooltipContent>
           </Tooltip>
 
@@ -501,7 +501,7 @@ const Sidebar: React.FC = () => {
                 </button>
               </TooltipTrigger>
               <TooltipContent side="right">
-                <p>Import Audio</p>
+                <p>导入音频</p>
               </TooltipContent>
             </Tooltip>
           )}
@@ -520,7 +520,7 @@ const Sidebar: React.FC = () => {
               </button>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>Meeting Notes</p>
+              <p>会议笔记</p>
             </TooltipContent>
           </Tooltip>
 
@@ -535,7 +535,7 @@ const Sidebar: React.FC = () => {
               </button>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>Settings</p>
+              <p>设置</p>
             </TooltipContent>
           </Tooltip>
 
@@ -599,8 +599,8 @@ const Sidebar: React.FC = () => {
                   <ChevronRight className="w-4 h-4 text-gray-500" />
                 )}
               </div>
-              {searchQuery && item.id === 'meetings' && isSearching && (
-                <span className="ml-2 text-xs text-blue-500 animate-pulse">Searching...</span>
+              {searchQuery && item.id === 'meetings' && is搜索中... (
+                <span className="ml-2 text-xs text-blue-500 animate-pulse">搜索中...</span>
               )}
             </>
           ) : (
@@ -624,7 +624,7 @@ const Sidebar: React.FC = () => {
                         handleEditStart(item.id, item.title);
                       }}
                       className="hover:text-blue-600 p-1 rounded-md hover:bg-blue-50 flex-shrink-0"
-                      aria-label="Edit meeting title"
+                      aria-label="编辑会议标题"
                     >
                       <Pencil className="w-4 h-4" />
                     </button>
@@ -634,7 +634,7 @@ const Sidebar: React.FC = () => {
                         setDeleteModalState({ isOpen: true, itemId: item.id });
                       }}
                       className="hover:text-red-600 p-1 rounded-md hover:bg-red-50 flex-shrink-0"
-                      aria-label="Delete meeting"
+                      aria-label="删除会议"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -728,7 +728,7 @@ const Sidebar: React.FC = () => {
                 className="p-3  text-lg font-semibold items-center hover:bg-gray-100 h-10   flex mx-3 mt-3 rounded-lg cursor-pointer"
               >
                 <Home className="w-4 h-4 mr-2" />
-                <span>Home</span>
+                <span>首页</span>
               </div>
             )}
           </div>
@@ -746,8 +746,8 @@ const Sidebar: React.FC = () => {
                     >
                       <NotebookPen className="w-4 h-4 mr-2 text-gray-600" />
                       <span className="text-gray-700">{item.title}</span>
-                      {searchQuery && item.id === 'meetings' && isSearching && (
-                        <span className="ml-2 text-xs text-blue-500 animate-pulse">Searching...</span>
+                      {searchQuery && item.id === 'meetings' && is搜索中... (
+                        <span className="ml-2 text-xs text-blue-500 animate-pulse">搜索中...</span>
                       )}
                     </div>
                   </div>
@@ -798,7 +798,7 @@ const Sidebar: React.FC = () => {
                 className="w-full flex items-center justify-center px-3 py-2 mt-1 text-sm font-medium text-gray-700 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors shadow-sm"
               >
                 <Upload className="w-4 h-4 mr-2" />
-                <span>Import Audio</span>
+                <span>导入音频</span>
               </button>
             )}
 
@@ -807,7 +807,7 @@ const Sidebar: React.FC = () => {
               className="w-full flex items-center justify-center px-3 py-1.5 mt-1 mb-1 text-sm font-medium text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors shadow-sm"
             >
               <Settings className="w-4 h-4 mr-2" />
-              <span>Settings</span>
+              <span>设置</span>
             </button>
             <Info isCollapsed={isCollapsed} />
             <div className="w-full flex items-center justify-center px-3 py-1 text-xs text-gray-400">
@@ -820,7 +820,7 @@ const Sidebar: React.FC = () => {
       {/* Confirmation Modal for Delete */}
       <ConfirmationModal
         isOpen={deleteModalState.isOpen}
-        text="Are you sure you want to delete this meeting? This action cannot be undone."
+        text="确定要删除这个会议吗？此操作无法撤销。"
         onConfirm={handleDeleteConfirm}
         onCancel={() => setDeleteModalState({ isOpen: false, itemId: null })}
       />
@@ -853,7 +853,7 @@ const Sidebar: React.FC = () => {
                     }
                   }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter meeting title"
+                  placeholder="输入会议标题"
                   autoFocus
                 />
               </div>

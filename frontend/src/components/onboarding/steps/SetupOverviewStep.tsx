@@ -47,12 +47,12 @@ export function SetupOverviewStep() {
     {
       number: 1,
       type: 'transcription',
-      title: 'Download Transcription Engine',
+      title: '下载转录引擎',
     },
     {
       number: 2,
       type: 'summarization',
-      title: 'Download Summarization Engine',
+      title: '下载摘要引擎',
     },
   ];
 
@@ -62,8 +62,8 @@ export function SetupOverviewStep() {
 
   return (
     <OnboardingContainer
-      title="Setup Overview"
-      description="Meetily requires that you download the Transcription & Summarization AI models for the software to work."
+      title="设置概览"
+      description="Meetily 需要下载转录和摘要 AI 模型才能正常工作。"
       step={2}
       totalSteps={isMac ? 4 : 3}
     >
@@ -90,8 +90,7 @@ export function SetupOverviewStep() {
                                 </button>
                                 </TooltipTrigger>
                                 <TooltipContent className="max-w-xs text-sm">
-                                You can also select external AI providers like OpenAI, Claude, or
-                                Ollama for summary generation in settings.
+                                您也可以在设置中选择外部 AI 提供商（如 OpenAI、Claude 或 Ollama）来生成摘要。
                                 </TooltipContent>
                             </Tooltip>
                             </TooltipProvider>

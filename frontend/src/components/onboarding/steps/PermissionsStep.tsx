@@ -113,8 +113,8 @@ export function PermissionsStep() {
 
   return (
     <OnboardingContainer
-      title="Grant Permissions"
-      description="Meetily needs access to your microphone and system audio to record meetings"
+      title="授予权限"
+      description="Meetily 需要访问您的麦克风和系统音频来录制会议"
       step={4}
       hideProgress={true}
       showNavigation={allPermissionsGranted}
@@ -127,7 +127,7 @@ export function PermissionsStep() {
           <PermissionRow
             icon={<Mic className="w-5 h-5" />}
             title="Microphone"
-            description="Required to capture your voice during meetings"
+            description="用于在会议中捕获您的声音"
             status={permissions.microphone}
             isPending={isPending}
             onAction={handleMicrophoneAction}
@@ -137,7 +137,7 @@ export function PermissionsStep() {
           <PermissionRow
             icon={<Volume2 className="w-5 h-5" />}
             title="System Audio"
-            description="Click Enable to grant Audio Capture permission"
+            description="点击启用以授予音频捕获权限"
             status={permissions.systemAudio}
             isPending={isPending}
             onAction={handleSystemAudioAction}
@@ -147,19 +147,19 @@ export function PermissionsStep() {
         {/* Action Buttons */}
         <div className="flex flex-col gap-3 pt-4">
           <Button onClick={handleFinish} disabled={!allPermissionsGranted} className="w-full h-11">
-            Finish Setup
+            完成设置
           </Button>
 
           <button
             onClick={handleSkip}
             className="text-sm text-neutral-500 hover:text-neutral-700 transition-colors"
           >
-            I'll do this later
+            稍后再说
           </button>
 
           {!allPermissionsGranted && (
             <p className="text-xs text-center text-muted-foreground">
-              Recording won't work without permissions. You can grant them later in settings.
+              没有权限录音将无法工作。您稍后可以在设置中授予权限。
             </p>
           )}
         </div>
