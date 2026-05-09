@@ -441,7 +441,7 @@ export function BuiltInModelManager({ selectedModel, onModelSelect }: BuiltInMod
                         e.stopPropagation();
                         deleteModel(model.name);
                       }}
-                      title="Delete model"
+                      title="删除模型"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>

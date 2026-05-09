@@ -709,7 +709,7 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
             onClick={handleUndo}
             disabled={currentHistoryIndex === 0}
             className="p-2 hover:bg-gray-100 rounded disabled:opacity-50"
-            title="Undo"
+            title="撤销"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -730,7 +730,7 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
             onClick={handleRedo}
             disabled={currentHistoryIndex === history.length - 1}
             className="p-2 hover:bg-gray-100 rounded disabled:opacity-50"
-            title="Redo"
+            title="重做"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -750,7 +750,7 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
           <button
             onClick={handleAddSection}
             className="p-2 hover:bg-gray-100 rounded"
-            title="Add new section"
+            title="添加新章节"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -437,7 +437,7 @@ export function DownloadProgressStep() {
 
   return (
     <OnboardingContainer
-      title="Getting things ready"
+      title="正在准备"
       description="You can start using Meetily after downloading the Transcription Engine."
       step={3}
       totalSteps={isMac ? 4 : 3}

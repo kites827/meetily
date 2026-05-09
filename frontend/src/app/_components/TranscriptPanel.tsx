@@ -75,7 +75,7 @@ export function TranscriptPanel({
                     variant="outline"
                     size="sm"
                     onClick={() => showModal('languageSettings')}
-                    title="Language"
+                    title="语言"
                   >
                     <GlobeIcon />
                     <span className='hidden md:inline'>

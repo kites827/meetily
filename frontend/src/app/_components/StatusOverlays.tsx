@@ -1,7 +1,7 @@
 interface StatusOverlaysProps {
   // Status flags
-  isProcessing: boolean;      // Processing transcription after recording stops
-  isSaving: boolean;          // Saving transcript to database
+  isProcessing: boolean;      // 录音停止后处理转录中
+  isSaving: boolean;          // 正在将转录保存到数据库
 
   // Layout
   sidebarCollapsed: boolean;  // For responsive margin calculation
@@ -47,14 +47,14 @@ export function StatusOverlays({
       {/* Processing status overlay - shown after recording stops while finalizing transcription */}
       <StatusOverlay
         show={isProcessing}
-        message="Finalizing transcription..."
+        message="正在完成转录..."
         sidebarCollapsed={sidebarCollapsed}
       />
 
       {/* Saving status overlay - shown while saving transcript to database */}
       <StatusOverlay
         show={isSaving}
-        message="Saving transcript..."
+        message="正在保存转录..."
         sidebarCollapsed={sidebarCollapsed}
       />
     </>

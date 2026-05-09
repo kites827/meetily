@@ -126,7 +126,7 @@ export function PermissionsStep() {
           {/* Microphone */}
           <PermissionRow
             icon={<Mic className="w-5 h-5" />}
-            title="Microphone"
+            title="麦克风"
             description="用于在会议中捕获您的声音"
             status={permissions.microphone}
             isPending={isPending}
